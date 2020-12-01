@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>STFT Viewer</title>
+</head>
+<body>
+  <h1>STFT Viewer</h1>
+  <canvas width="800" height="600" id="canvas"></canvas>
+  <p id="status"></p>
+  <input type="file" accept="audio/*" id="file" />
+  <p>
+  <label>Window function: 
+    <select id="window_function">
+      <option value="Blackman">Blackman</input>
+      <option value="Hamming">Hamming</input>
+      <option value="Hann">Hann</input>
+      <option value="Rectangle" selected>Rectangle</input>
+    </select>
+  </label>
+  <label>FFT size: 
+    <input type="number" min="2" max="8192" value="8192" id="fft_size"/>
+  </p>
+  <button id="calculate">Calculate</button>
+  <script src="index.js"></script>
+</body>
+</html>
