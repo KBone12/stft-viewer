@@ -6,7 +6,15 @@ const dist = path.resolve(__dirname, "dist");
 
 module.exports = {
   entry: {
-    index: "./js/index.js"
+    index: "./js/index.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /worker\.js$/,
+        use: { loader: "worker-loader" },
+      }
+    ],
   },
   output: {
     path: dist,
