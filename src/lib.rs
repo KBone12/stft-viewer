@@ -46,7 +46,11 @@ impl WindowFunction {
 
 #[wasm_bindgen]
 pub fn run_stft(audio_data: &[f32], size: usize, window_function: WindowFunction) -> Vec<f32> {
-    let offset = size / 2;
+    let offset = match window_function {
+        WindowFunction::Blackman => size / 6,
+        WindowFunction::Hamming | WindowFunction::Hann => size / 4,
+        WindowFunction::Rectangle => size / 2,
+    };
     let mut fft_planner = FFTplanner::new(false);
     let fft = fft_planner.plan_fft(size);
     let window = window_function.generate(size);
